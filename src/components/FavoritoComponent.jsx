@@ -1,7 +1,13 @@
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  agregarFavorito,
+  eliminarFavorito,
+} from "../features/favoritos/favoritosSlice";
 
 const FavoritoComponent = ({ producto }) => {
+  const dispatch = useDispatch();
   const favoritos = useSelector((state) => state.favoritos.favoritos);
 
   const esFavorito = useCallback(
@@ -11,7 +17,14 @@ const FavoritoComponent = ({ producto }) => {
     [favoritos]
   );
 
-  // Renderizado básico con checkbox sin lógica dispatch aún
+  const handleFavorito = (producto) => {
+    if (esFavorito(producto.id)) {
+      dispatch(eliminarFavorito(producto));
+    } else {
+      dispatch(agregarFavorito(producto));
+    }
+  };
+
   return (
     <div className="form-check">
       <input
@@ -19,7 +32,7 @@ const FavoritoComponent = ({ producto }) => {
         type="checkbox"
         id={`checkbox-${producto.id}`}
         checked={esFavorito(producto.id)}
-        // onChange queda para el próximo commit
+        onChange={() => handleFavorito(producto)}
       />
       <label className="form-check-label" htmlFor={`checkbox-${producto.id}`}>
         Marcar como favorito
