@@ -35,6 +35,20 @@ export const productosSlice = createSlice({
             const actualizado = action.payload
             state.productos = state.productos.map(producto => producto.id === actualizado.id ? actualizado : producto)
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchProductos.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(fetchProductos.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.productos = action.payload
+            })
+            .addCase(fetchProductos.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.error.message
+            })
     }
 })
 
