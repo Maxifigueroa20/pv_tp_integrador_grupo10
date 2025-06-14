@@ -8,7 +8,7 @@ const Detalle = () => {
   const productos = useSelector((state) => state.productos.productos);
 
   const producto = useMemo(() => {
-    return productos.find((producto) => producto.id === parseInt(id));
+    return productos.find((producto) => producto.id === Number(id));
   }, [id, productos]);
 
   if (!producto) {
