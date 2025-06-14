@@ -44,8 +44,7 @@ const Detalle = () => {
           <div className="col-md-8 px-3 py-2 bg-body-secondary">
             <p>
               <small className="text-body-secondary">
-                {" "}
-                ID del producto: {producto.id}{" "}
+                ID del producto: {producto.id}
               </small>
             </p>
             <h5> {producto.nombre} </h5>
