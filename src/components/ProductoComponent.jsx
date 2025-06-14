@@ -12,7 +12,7 @@ const ProductoComponent = () => {
 
     const productosAMostrar = useMemo(() => {
         return mostrarFavoritos ? favoritos : productos
-    }, [mostrarFavoritos])
+    }, [mostrarFavoritos, favoritos])
 
     if (productosAMostrar.length === 0) {
         return (
