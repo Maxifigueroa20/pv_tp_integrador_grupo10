@@ -13,57 +13,65 @@ const Detalle = () => {
 
     if (!producto) {
         return (
-            <div className="container my-4">
-                <div className="row">
-                    <div className="col">
-                        <div className="alert alert-secondary" role="alert">
-                            <p>El producto a mostrar no existe.</p>
-                            <Link to="/">
-                                <button type="button" className="btn btn-dark btn-sm me-1">
-                                    Regresar
-                                </button>
-                            </Link>
+            <section className="bg-light py-4" style={{ minHeight: "80vh" }}>
+                <div className="container">
+                    <div className="mx-auto p-4 bg-white border border-1 border-secondary rounded-4 shadow-lg d-flex flex-column align-items-center justify-content-center" style={{ maxWidth: "500px", minHeight: "200px" }}>
+                        <div className="bi bi-exclamation-triangle-fill text-secondary fs-1 mb-3"></div>
+                        <div className="alert alert-secondary w-100 text-center mb-3" role="alert">
+                            El producto a mostrar no existe.
                         </div>
+                        <Link to="/">
+                            <button type="button" className="btn btn-dark btn-sm">
+                                Regresar
+                            </button>
+                        </Link>
                     </div>
                 </div>
-            </div>
+            </section>
         )
     }
 
     return (
-        <section>
-            <div className="container my-4">
-                <div className="row g-0 border border-1 border-dark-subtle rounded shadow">
-                    <div className="col-md-4">
-                        <img
-                            src={producto.imagen}
-                            className="img-fluid h-100 w-100 object-fit-cover rounded"
-                            alt={producto.nombre}
-                        />
-                    </div>
-                    <div className="col-md-8 px-3 py-2 bg-body-secondary">
-                        <p>
-                            <small className="text-body-secondary">
-                                ID del producto: {producto.id}
-                            </small>
-                        </p>
-                        <h5> {producto.nombre} </h5>
-                        <p> {producto.descripcion} </p>
-                        <p> Categoria: {producto.categoria} </p>
-                        <p> Rating: {producto.rating} </p>
-                        <p> Stock: {producto.stock} </p>
-                        <div className="d-flex align-items-center my-2">
-                            <h5> ${producto.precio} </h5>
-                            <div className="ms-auto">
-                                <Link to="/">
-                                    <button type="button" className="btn btn-dark btn-sm me-1">
-                                        Volver
-                                    </button>
-                                </Link>
-                                <button className="btn btn-dark btn-sm ms-1">Editar</button>
+        <section className="bg-light py-4" style={{ minHeight: "80vh" }}>
+            <div className="container">
+                <div className="mx-auto p-4 bg-white border border-1 border-dark rounded-4 shadow-lg" style={{ maxWidth: "900px" }}>
+                    <div className="card flex-md-row border-0 bg-transparent">
+                        <div className="d-flex align-items-center justify-content-center bg-secondary-subtle rounded-3" style={{ minWidth: "260px", minHeight: "260px", maxWidth: "320px", maxHeight: "320px" }}>
+                            <img
+                                src={producto.imagen}
+                                className="img-fluid object-fit-contain"
+                                style={{ width: "220px", height: "220px", mixBlendMode: "multiply" }}
+                                alt={producto.nombre}
+                            />
+                        </div>
+                        <div className="card-body d-flex flex-column justify-content-between py-2 px-md-4">
+                            <div>
+                                <p>
+                                    <small className="text-body-secondary">
+                                        ID del producto: {producto.id}
+                                    </small>
+                                </p>
+                                <h3 className="fw-bold text-primary-emphasis">{producto.nombre}</h3>
+                                <p className="mb-2">{producto.descripcion}</p>
+                                <div className="mb-2">
+                                    <span className="badge bg-primary-subtle text-primary-emphasis me-2">{producto.categoria}</span>
+                                    <span className="badge bg-warning-subtle text-warning-emphasis me-2">⭐ {producto.rating}</span>
+                                    <span className="badge bg-success-subtle text-success-emphasis">Stock: {producto.stock}</span>
+                                </div>
+                            </div>
+                            <div className="d-flex align-items-center mt-3">
+                                <h4 className="fw-bold text-success mb-0">${producto.precio}</h4>
+                                <div className="ms-auto d-flex gap-2">
+                                    <Link to="/">
+                                        <button type="button" className="btn btn-primary btn-sm">Volver</button>
+                                    </Link>
+                                    <button className="btn btn-dark btn-sm">Editar</button>
+                                </div>
+                            </div>
+                            <div className="mt-3">
+                                <FavoritoComponent producto={producto} />
                             </div>
                         </div>
-                        <FavoritoComponent producto={producto} />
                     </div>
                 </div>
             </div>

@@ -19,18 +19,13 @@ const FavoritoComponent = ({ producto }) => {
     }
 
     return (
-        <div className="form-check">
-            <input
-                className="form-check-input"
-                type="checkbox"
-                id={`checkbox-${producto.id}`}
-                checked={esFavorito(producto.id)}
-                onChange={() => handleFavorito(producto)}
-            />
-            <label className="form-check-label" htmlFor={`checkbox-${producto.id}`}>
-                Marcar como favorito
-            </label>
-        </div>
+        <button
+            type="button"
+            className="btn btn-link p-0 position-absolute top-0 end-0 m-2"
+            onClick={() => handleFavorito(producto)}
+        >
+            <i className={`bi ${esFavorito(producto.id) ? "bi-heart-fill text-danger" : "bi-heart text-secondary"}`} style={{ fontSize: "1.5rem" }}></i>
+        </button>
     )
 }
 
