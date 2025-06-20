@@ -54,5 +54,68 @@ export default function FormularioProducto() {
     navigate("/");
   };
 
-  return <div></div>;
+  return (
+    <div className="container mt-4">
+      <h2>{producto ? "Editar Producto" : "Crear Producto"}</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-3">
+          <label className="form-label">Nombre</label>
+          <input
+            className="form-control"
+            {...register("nombre", { required: true })}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Precio</label>
+          <input
+            type="number"
+            step="0.01"
+            className="form-control"
+            {...register("precio", { required: true })}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Descripción</label>
+          <textarea
+            className="form-control"
+            {...register("descripcion", { required: true })}
+          ></textarea>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Categoría</label>
+          <input
+            className="form-control"
+            {...register("categoria", { required: true })}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Imagen (URL)</label>
+          <input
+            className="form-control"
+            {...register("imagen", { required: true })}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Stock</label>
+          <input
+            type="number"
+            className="form-control"
+            {...register("stock", { required: true })}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Rating</label>
+          <input
+            type="number"
+            step="0.1"
+            className="form-control"
+            {...register("rating", { required: true, min: 0, max: 5 })}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          {producto ? "Actualizar" : "Crear"}
+        </button>
+      </form>
+    </div>
+  );
 }
