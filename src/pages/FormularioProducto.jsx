@@ -64,7 +64,7 @@ export default function FormularioProducto() {
             const value = getValues(name)
             if (typeof value === "string" && value.trim() !== "") return "form-control is-valid"
             const numericValue = Number(value)
-            if (!isNaN(numericValue) && numericValue !== 0) return "form-control is-valid"
+            if (!isNaN(numericValue)) return "form-control is-valid"
         }
         return "form-control"
     }
