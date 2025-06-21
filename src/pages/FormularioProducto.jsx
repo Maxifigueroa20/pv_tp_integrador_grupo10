@@ -63,7 +63,8 @@ export default function FormularioProducto() {
         if (touchedFields[name]) {
             const value = getValues(name)
             if (typeof value === "string" && value.trim() !== "") return "form-control is-valid"
-            if (typeof value === "number" && value !== undefined && value !== null && value !== "") return "form-control is-valid"
+            const numericValue = Number(value)
+            if (!isNaN(numericValue) && numericValue !== 0) return "form-control is-valid"
         }
         return "form-control"
     }
