@@ -14,13 +14,19 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link text-light fw-semibold rounded px-3" to="/">Home</Link>
+                            <Link className="nav-link text-light fw-semibold rounded px-3" to="/">
+                                Home
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-light fw-semibold rounded px-3" to="/">Formulario</Link>
+                            <Link className="nav-link text-light fw-semibold rounded px-3" to="/crear">
+                                Crear Producto
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-light fw-semibold rounded px-3" to="/favoritos">Favoritos</Link>
+                            <Link className="nav-link text-light fw-semibold rounded px-3" to="/favoritos">
+                                Favoritos
+                            </Link>
                         </li>
                     </ul>
                 </div>

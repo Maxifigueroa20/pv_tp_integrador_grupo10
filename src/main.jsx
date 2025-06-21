@@ -7,6 +7,7 @@ import App from "./App.jsx"
 import Inicio from "./pages/Inicio.jsx"
 import Favoritos from "./pages/Favoritos.jsx"
 import Detalle from "./pages/Detalle.jsx"
+import FormularioProducto from "./pages/FormularioProducto.jsx"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
@@ -20,6 +21,8 @@ const router = createBrowserRouter([
             { index: true, element: <Inicio /> },
             { path: "favoritos", element: <Favoritos /> },
             { path: "detalle/:id", element: <Detalle /> },
+            { path: "crear", element: <FormularioProducto /> },
+            { path: "editar/:id", element: <FormularioProducto /> },
         ],
     },
 ])
