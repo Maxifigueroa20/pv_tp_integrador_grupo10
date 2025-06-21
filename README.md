@@ -14,7 +14,7 @@ Modalidad: Trabajo grupal – Integrador Final.
 
 - 📌 Objetivo del proyecto
 
--⚙️ Tecnologías utilizadas
+- ⚙️ Tecnologías utilizadas
 
 - 🗂 Estructura del proyecto
 
