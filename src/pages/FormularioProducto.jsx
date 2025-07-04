@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { agregarProducto, actualizarProducto } from "../features/producto/productosSlice"
+import Swal from "sweetalert2"
 
 export default function FormularioProducto() {
     const { id } = useParams()
@@ -50,11 +51,26 @@ export default function FormularioProducto() {
     const onSubmit = data => {
         if (producto) {
             dispatch(actualizarProducto({ ...data, id: producto.id }))
+            Swal.fire({
+                icon: "success",
+                title: "¡Producto actualizado!",
+                text: "El producto fue modificado correctamente.",
+                confirmButtonColor: "#3085d6"
+            }).then(() => {
+                navigate("/")
+            })
         } else {
             const nuevoProducto = { ...data, id: Date.now() }
             dispatch(agregarProducto(nuevoProducto))
+            Swal.fire({
+                icon: "success",
+                title: "¡Producto creado!",
+                text: "El producto fue agregado correctamente.",
+                confirmButtonColor: "#3085d6"
+            }).then(() => {
+                navigate("/")
+            })
         }
-        navigate("/")
     }
 
     // Helper para clases de validación mejorado
@@ -95,7 +111,17 @@ export default function FormularioProducto() {
                             </div>
                             <div className="col-12 col-md-4">
                                 <label className="form-label fw-semibold">Categoría</label>
-                                <input type="text" className={inputClass("categoria")} {...register("categoria", { required: "La categoría es obligatoria" })} placeholder="Categoría" />
+                                <select
+                                    className={`form-select ${inputClass("categoria").replace("form-control", "")}`}
+                                    {...register("categoria", { required: "La categoría es obligatoria" })}
+                                    defaultValue=""
+                                >
+                                    <option value="" selected>Selecciona una categoría</option>
+                                    <option value="men's clothing">Ropa de hombre</option>
+                                    <option value="women's clothing">Ropa de mujer</option>
+                                    <option value="jewelery">Joyería</option>
+                                    <option value="electronics">Electrónica</option>
+                                </select>
                                 {errors.categoria && <span className="invalid-feedback">{errors.categoria.message}</span>}
                             </div>
                             <div className="col-12 col-md-4">
